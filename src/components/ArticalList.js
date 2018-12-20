@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import { updatedAritcals } from '../store/data'
 
@@ -21,13 +21,6 @@ const styles = theme => ({
   	width: '100%',
   	justifyContent: 'space-between',
     backgroundColor: theme.palette.background.paper,
-  },
-  list: {
-  	marginBottom: '10px',
-  },
-  listTitleMobile: {
-  	width: 'calc(100vw - 170px)',
-  	overflowX: 'auto'
   },
   item: {
   	padding: 0,
@@ -71,21 +64,22 @@ class ArticalItem extends Component {
 	}
 
 	render() {
-		const { item, date, classes, smallScreen } = this.props;
+		const { item, date, classes } = this.props;
 
-		return (<div className={classes.list}>
+		return (<div className="artical-list">
 			<ListItem onClick={this.handleClick} className={classes.item}>
 			  <ListItemIcon>
 			    <StarIcon style={{color: colors.lightBlue['400']}} />
 			  </ListItemIcon>
-			  <p className={smallScreen ? classes.listTitleMobile : null}>
+			  <p className="artical-list-item_title">
 			  	<a
 			  		href={`${item.book.url}/${item.path || ''}`}
 			  		target="_blank"
 			  		style={{color: colors.lightBlue[800]}}
 			  		onClick={(e) => {e.stopPropagation()}}
 			  		rel="noopener noreferrer" >{item.book.name}</a>
-			  	<span className={classes.date}> ({smallScreen ? moment(date).format('MM/DD') : date})</span>
+			  	<span className="date-type-full"> ({date})</span>
+			  	<span className="date-type-short"> ({moment(date).format('MM/DD')})</span>
 			  </p>
 			  <span className={classes.arrow}>{this.state.open ? <ExpandLess /> : <ExpandMore />}</span>
 			</ListItem>
@@ -110,14 +104,14 @@ class ArticalItem extends Component {
 }
 
 function ArticalList(props) {
-	const { classes, smallScreen } = props;
+	const { classes } = props;
 
 	return (
 		<List className={classes.root}>
 			{
 				Object.keys(updatedAritcals).map(date => {
 					const item = updatedAritcals[date]
-					return <ArticalItem item={item} date={date} key={date} classes={classes} smallScreen={smallScreen} />
+					return <ArticalItem item={item} date={date} key={date} classes={classes} />
 				})
 			}
     </List>
@@ -129,7 +123,7 @@ ArticalList.defaultProps = {
 }
 
 ArticalList.propTypes = {
-	smallScreen: propTypes.bool
+	classes: PropTypes.object
 }
 
 export default withStyles(styles)(ArticalList)

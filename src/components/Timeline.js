@@ -40,7 +40,7 @@ class Timeline extends Component {
 		this.setState({ lineHeight: document.querySelector('.cp-timeline-line').clientHeight })
 	}
 	render() {
-		const { data, classes, smallScreen } = this.props
+		const { data, classes } = this.props
 		const { lineHeight } = this.state
 
 		return (
@@ -67,12 +67,8 @@ class Timeline extends Component {
 												key={point.title}
 												className={`cp-timeline-li_${item.side === 'left' || (item.side === 'alternative' && (index % 2)) ? 'l' : 'r'}`}
 											>{point.title}
-												{
-													smallScreen
-														?
-															<span className="timeline-date_mobile">{moment(point.date).format('MM/DD')}</span>
-														: `(${point.date})`
-												}
+												<span className="date-type-full"> ({point.date})</span>
+												<span className="date-type-short timeline-date_mobile">{moment(point.date).format('MM/DD')}</span>
 											</li>
 										</Tooltip>
 									))
@@ -88,14 +84,12 @@ class Timeline extends Component {
 
 Timeline.defaultProps = {
 	classes: {},
-	data: [],
-	smallScreen: false
+	data: []
 }
 
 Timeline.propTypes = {
 	classes: PropTypes.object,
-	data: PropTypes.array.isRequired,
-	smallScreen: PropTypes.bool
+	data: PropTypes.array.isRequired
 }
 
 export default withStyles(styles)(Timeline)

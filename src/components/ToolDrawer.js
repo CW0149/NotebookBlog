@@ -9,7 +9,6 @@ import ListItem from '@material-ui/core/ListItem'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import routes from 'config/routes'
 import { colors } from 'config/theme'
-import siteConfig from 'config/site'
 
 const { red, orange, yellow, green, blue, lime, purple } = colors
 const colorsArr = [red, orange, yellow, green, blue, lime, purple]
@@ -79,10 +78,10 @@ class ToolDrawer extends Component {
         </div>
         <div className="qcode-wrapper">
           <img
-            src={siteConfig.qCode.url}
-            alt={siteConfig.qCode.alt}
+            src="/images/qrcode.jpg"
+            alt="qrcode"
             className="qcode"
-            title={siteConfig.qCode.title}
+            title="扫码关注我的公众小号"
           />
         </div>
       </Drawer>

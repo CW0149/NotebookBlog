@@ -1,14 +1,13 @@
 import React from 'react';
-import siteConfig from 'config/site'
 
 function Qcode(props) {
 	return (
 		<div className="comp-qcode">
 			<img
-			  src={siteConfig.qCode.url}
-			  alt={siteConfig.qCode.alt}
+			  src="/images/qrcode.jpg"
+			  alt="qrcode"
 			  className="comp-qcode-img"
-			  title={siteConfig.qCode.title}
+			  title="扫码关注我的公众小号"
 			/>
 		</div>
 	)

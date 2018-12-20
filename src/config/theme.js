@@ -19,19 +19,17 @@ import brown from '@material-ui/core/colors/brown'
 import grey from '@material-ui/core/colors/grey'
 import blueGrey from '@material-ui/core/colors/blueGrey'
 
-// gitbook显示颜色顺序
-const colorPicker = ['50']
 const colors = { green, lightGreen, lime, yellow, amber, orange,
   deepOrange, brown, grey, blueGrey, red, pink, purple, deepPurple,
   indigo, blue, lightBlue,cyan, teal }
-const gitbookColorsArr = Object.keys(colors).map(key => colors[key][colorPicker])
+const colorsArr = Object.keys(colors).map(key => colors[key])
 
 export default createMuiTheme({
     palette: {
       primary: {
           main: '#D4E157',
-          light: '#f1f5ca',
-          contrastText: '#111'
+          light: '#f1f5ca'
+          // contrastText: '#fff'
       },
       secondary: {
           main: '#c5e1a5',
@@ -77,4 +75,4 @@ export default createMuiTheme({
 
 })
 
-export { colors, gitbookColorsArr }
+export { colors, colorsArr }

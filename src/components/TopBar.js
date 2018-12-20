@@ -12,16 +12,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
 import IconButton  from '@material-ui/core/IconButton'
 
-import routes from 'config/routes'
-import siteConfig from 'config/site'
-
-const { menu } = routes
-
 
 const topbarStyle = theme => ({
-	root: {
-		padding: '0 60px'
-	},
 	grow: {
     flexGrow: 1,
   },
@@ -38,12 +30,12 @@ const topbarStyle = theme => ({
 })
 
 const TopBar = withStyles(topbarStyle)(
-	({ classes, toggleDrawer }) => {
+	({ classes, menu, toggleDrawer }) => {
 		return (
-			<AppBar color="primary" className={classes.root}>
+			<AppBar color="primary" className="topbar bs-s ss-h">
 				<Toolbar>
-					<Typography variant="h6" color="inherit">
-					  <Link to="/">{siteConfig.name}</Link>
+					<Typography variant="h6">
+					  <Link to="/">Ryan's Notebook</Link>
 					</Typography>
 					<div className={classes.grow} />
 					<nav className={classes.sectionDesktop}>
@@ -54,9 +46,9 @@ const TopBar = withStyles(topbarStyle)(
 					<div className="topbar-logo">
 						<div className="topbar-logo_wrapper">
 							<img
-								src={siteConfig.logo.url}
+								src="/favicon.ico"
 								style={{width: '100%'}}
-								alt={siteConfig.logo.alt}
+								alt="logo"
 								onClick={() => toggleDrawer(true)}
 							/>
 						</div>
@@ -70,6 +62,7 @@ const TopBar = withStyles(topbarStyle)(
 TopBar.propTypes = {
 	classes: Proptypes.object,
 	toggleDrawer: Proptypes.func.isRequired,
+	menu: Proptypes.array.isRequired,
 }
 
 class TopBarMobile extends React.Component {
@@ -86,13 +79,13 @@ class TopBarMobile extends React.Component {
 
 
 	render() {
-		const { classes } = this.props
+		const { classes, menu } = this.props
 		const { anchorEl } = this.state
 		const open = Boolean(anchorEl)
 
 		return (
-			<AppBar color="primary" className={classes.root}>
-				<Toolbar>
+			<AppBar color="primary" className="topbar ss-s bs-h">
+				<Toolbar className="classes.toolbar">
 					<IconButton
 					  aria-label="Menu"
 					  onClick={this.handleMenu}

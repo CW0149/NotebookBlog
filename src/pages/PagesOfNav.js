@@ -6,34 +6,17 @@ import CardContent from '@material-ui/core/CardContent'
 import Button  from '@material-ui/core/Button'
 
 import Timeline from 'components/Timeline'
-import { gitbookColorsArr } from 'config/theme'
+import { colorsArr } from 'config/theme'
 import { updateAndPlanData, siteUpdatesData } from 'store/data'
 import books from 'config/book'
 
 
-const bgColors = gitbookColorsArr
-const smallScreen = window.screen.width < 740 || window.clientWidth < 740
+const colorPicker = ['50']
+const bgColors = []
+colorsArr.forEach(color => colorPicker.forEach(key => bgColors.push(color[key])))
+const isMobile = window.screen.width < 740 || window.clientWidth < 740
 
 const gitbookStyles = theme => ({
-	body: {
-		padding: '20px 40px',
-		display: 'flex',
-		maxWidth: '800px',
-		margin: '0 auto',
-  	flexWrap: 'wrap',
-  	justifyContent: 'space-between'
-
-	},
-	card: {
-    width: smallScreen ? '100%' : '48%',
-    marginBottom: '20px'
-  },
-  cardContent: {
-  	display: 'flex',
-  	height: 400,
-  	alignItems: 'center',
-  	justifyContent: 'center',
-  },
   cardActions: {
   	justifyContent: 'flex-end'
   }
@@ -43,11 +26,11 @@ const BookCard = ({ classes, children, url, index }) => {
 	const colorKeys = Object.keys(bgColors)
 	const bgColor = bgColors[colorKeys[index % colorKeys.length]]
 	return (
-		<Card className={classes.card}>
-			<CardContent className={classes.cardContent} style={{background: bgColor}}>{children}</CardContent>
+		<Card className="gitbook-card">
+			<CardContent className="gitbook-card-content" style={{background: bgColor}}>{children}</CardContent>
 			<CardActions className={classes.cardActions}>
         <Button color="primary">
-          <a href={url} target={smallScreen ? '_self' : '_blank'}>前往</a>
+          <a href={url} target={isMobile ? '_self' : '_blank'}>前往</a>
         </Button>
       </CardActions>
 		</Card>
@@ -57,7 +40,7 @@ const BookCard = ({ classes, children, url, index }) => {
 const Gitbook = withStyles(gitbookStyles)(
 	({ classes }) => (
 		<div className="gb">
-			<div className={classes.body}>
+			<div className="gb-body">
 				{
 					books.map((book, index) => (
 						<BookCard key={book.name} url={book.url} classes={classes} index={index}>
@@ -72,13 +55,13 @@ const Gitbook = withStyles(gitbookStyles)(
 
 const UpdatesAndPlan = (props) => {
 	return (
-		<Timeline data={updateAndPlanData} smallScreen={smallScreen} />
+		<Timeline data={updateAndPlanData} />
 	)
 }
 
 const SiteUpdates = (props) => {
 	return (
-		<Timeline data={siteUpdatesData} smallScreen={smallScreen} />
+		<Timeline data={siteUpdatesData} />
 	)
 }
 

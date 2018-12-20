@@ -31,10 +31,9 @@ a {
 }
 
 .app-body {
-  padding: 20px 80px;
-}
-.app-body-mobile {
-  padding: 10px 30px;
+  padding: 20px;
+  max-width: 1160px;
+  margin: 0 auto;
 }
 
 .gb {
@@ -57,7 +56,11 @@ li {
   margin-top: 6px;
 }
 
+footer {
+  text-align: center;
+}
 
+/*时间线*/
 .cp-timeline ul {
 
 }
@@ -136,6 +139,29 @@ li.cp-timeline-li_r::after {
   color: #43A047;
 }
 
+.timeline-date_mobile {
+  position: absolute;
+  top: 0;
+  line-height: 1;
+  font-size: 10px;
+}
+
+.cp-timeline-li_r .timeline-date_mobile {
+  left: 5px;
+}
+.cp-timeline-li_l .timeline-date_mobile {
+  right: 5px;
+}
+
+/* 导航bar */
+.topbar {
+  padding: 0 30px;
+}
+.topbar > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 60px !important;
+}
 .topbar-logo {
   position: relative;
   margin-right: -16px;
@@ -152,36 +178,10 @@ li.cp-timeline-li_r::after {
   cursor: pointer;
 }
 
-.qcode-wrapper {
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  bottom: 20px;
-}
-.qcode {
-  width: 100px;
-}
-
-footer {
-  text-align: center;
-}
+/* 底部二维码 */
 .footer-qcode {
   width: 100px;
   margin-top: 20px;
-}
-
-.timeline-date_mobile {
-  position: absolute;
-  top: 0;
-  line-height: 1;
-  font-size: 10px;
-}
-
-.cp-timeline-li_r .timeline-date_mobile {
-  left: 5px;
-}
-.cp-timeline-li_l .timeline-date_mobile {
-  right: 5px;
 }
 
 .comp-qcode {
@@ -197,7 +197,6 @@ footer {
   justify-content: center;
   align-items: center;
 }
-
 .comp-qcode-img {
   height: 300%;
   width: 300%;
@@ -211,6 +210,108 @@ footer {
 .comp-qcode:hover .comp-qcode-img {
   width: 100%;
   height: 100%;
+}
+
+/* 滑窗二维码 */
+.qcode-wrapper {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+}
+.qcode {
+  width: 100px;
+}
+
+/* 文章列表 */
+.artical-list {
+  margin-bottom: 10px;
+}
+
+/* gitbook */
+.gb-body {
+  padding: 20px 40px;
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.gitbook-card {
+  width: 48%;
+  margin-bottom: 20px;
+}
+.gitbook-card-content {
+  display: flex;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+}
+
+/**
+ ** 小组件
+**/
+
+/* 日期格式 */
+.date-type-short {
+  display: none;
+}
+
+/* 通用显隐藏 */
+.bs-h {
+  display: none !important;
+}
+.bs-s {
+  display: block !important;
+}
+
+@media screen and (max-width: 760px) {
+  .app-body {
+    padding: 12px 20px;
+  }
+  /* 底部二维码显隐藏 */
+  .comp-qcode {
+    display: none;
+  }
+
+  /* 日期格式控制 */
+  .date-type-full {
+    display: none;
+  }
+  .date-type-short {
+    display: inline-block;
+  }
+
+  /* 文章列表 */
+  .artical-list .artical-list-item_title {
+    width: calc(100vw - 170px);
+    overflow-x: auto;
+  }
+
+  /* 通用显隐藏 */
+  .ss-h {
+    display: none !important;
+  }
+  .ss-s {
+    display: block !important;
+  }
+
+  /* 顶部导航 */
+  .topbar {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .gitbook-card {
+    width: 100%;
+  }
+  .gitbook-card-content {
+    height: 200px;
+  }
+  .gb-body {
+    padding: 20px;
+  }
 }
 
 
