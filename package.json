@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@antv/g6-editor": "^1.2.0",
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
-    "axios": "^0.18.0",
     "moment": "^2.22.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "react-select": "^2.1.2",
+    "react-virtualized": "^9.21.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -30,6 +32,7 @@
   ],
   "devDependencies": {
     "react-app-rewire-aliases": "^0.2.0",
-    "react-app-rewired": "^1.6.2"
+    "react-app-rewired": "^1.6.2",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }

@@ -1,5 +1,16 @@
-import { Gitbook, UpdatesAndPlan, SiteUpdates, GithubPopular } from 'pages'
-import IndexPage from 'pages/IndexPage'
+import React from 'react'
+import lazyLoad from 'utils/lazyLoad'
+import IndexPage from 'pages/nav/IndexPage'
+import Gitbook from 'pages/nav/Gitbook'
+import UpdatesAndPlan from 'pages/nav/UpdatesAndPlan'
+import SiteUpdates from 'pages/nav/SiteUpdates'
+
+const index = {
+	path: '/',
+	exact: true,
+	navHeader: true,
+	component: IndexPage
+}
 
 const menu = [{
 	name: 'Gitbook',
@@ -11,35 +22,59 @@ const menu = [{
 	path: '/timeline',
 	navHeader: true,
 	component: UpdatesAndPlan
-
 }, {
 	name: '更新日志',
 	path: '/updates',
 	navHeader: true,
 	component: SiteUpdates
-
 }]
 
-export default {
-	index: [{
-		path: '/',
-		exact: true,
-		navHeader: true,
-		component: IndexPage
-	}],
-	menu,
-	drawer: [{
+const drawer = [
+	{
+		category: 'nav',
+		items: [{
+			title: 'Home',
+			path: '/',
+			navHeader: true,
+			exact: true,
+			component: IndexPage
+		}]
+	},
+	{
 		category: 'fun',
 		items: [{
 			title: 'Github Rate',
 			path: '/github-rate',
-			component: GithubPopular
+			component: lazyLoad(() => import('pages/GithubPopular'))
 		}, {
-			title: 'test',
-			path: '/'
+			title: 'Knowleage Map',
+			path: '/knowleage-map',
+			component: lazyLoad(() => import('pages/KnowleageMap'))
 		}]
-	}, {
+	},
+	{
 		category: 'tools',
 		items: []
-	}]
-}
+	}
+]
+
+let allRoutes = [
+	index,
+	...menu,
+	...drawer.reduce((result, next) => result.concat(next.items), []),
+	{
+		name: '404',
+		component: () => <div style={{ textAlign: 'center', fontSize: '40px', marginTop: '100px' }}>
+				Ooops, not found!
+				<a href="/" style={{fontSize: '20px', color: 'green', marginLeft: '20px'}}>Home</a>
+		</div>
+	}
+]
+const allRoutesMap = allRoutes.reduce((result, next) => {
+	result[next.path] = next
+	return result
+}, {})
+const filteredRoutes = Object.keys(allRoutesMap).map(key => allRoutesMap[key])
+
+
+export { index, menu, drawer,  filteredRoutes as allRoutes }

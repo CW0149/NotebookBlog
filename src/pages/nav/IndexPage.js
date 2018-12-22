@@ -52,7 +52,7 @@ function IndexPage(props) {
 				<Panel title="新更文章" date="2018-12-15" defaultExpanded={true}>
 					<ArticalList />
 				</Panel>
-				<footer className="ss-show bs-h">
+				<footer className="ss-s bs-h">
 					<img src="/images/qrcode.jpg" alt="qrcode" className="footer-qcode" />
 				</footer>
 			</div>

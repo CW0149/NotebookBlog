@@ -1,0 +1,1 @@
+export { default as G6Editor } from './G6Editor'

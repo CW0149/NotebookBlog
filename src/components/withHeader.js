@@ -1,19 +1,24 @@
 import React from 'react';
-import propTypes from 'prop-types'
 import { TopBar, StyledTopbarMobile } from 'components/TopBar'
-import routes from 'config/routes'
+import ToolDrawer from 'components/ToolDrawer'
+import { menu } from 'config/routes'
 
-const { menu } = routes
-
-function withHeader(Component, { toggleDrawer }) {
+function withHeader(Component) {
 	return class extends React.Component {
+		state = {
+			drawerOpen: false
+		}
+
+		toggleDrawer = (open) => {
+			this.setState({ drawerOpen: open })
+		}
 		render() {
-			const { props } = this
 			return (
 				<div>
 					<StyledTopbarMobile menu={menu} />
-					<TopBar toggleDrawer={toggleDrawer} menu={menu} />
-					<Component />
+					<TopBar toggleDrawer={this.toggleDrawer} menu={menu} />
+					<div style={{paddingTop: '64px'}}><Component/></div>
+					<ToolDrawer open={this.state.drawerOpen} toggleDrawer={this.toggleDrawer} />
 				</div>
 			)
 		}

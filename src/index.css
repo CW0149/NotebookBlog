@@ -13,6 +13,9 @@ body {
   background: #f8f9f5;
   -webkit-overflow-scrolling: touch
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -24,10 +27,6 @@ a {
 	color: inherit;
   display: inline-block;
   outline: none;
-}
-
-#root {
-  padding-top: 64px;
 }
 
 .app-body {
@@ -71,7 +70,7 @@ footer {
   cursor: pointer;
   color: #333;
   font-size: 13px;
-  max-width: 35vw;
+  max-width: 45vw;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow-x: hidden;
@@ -181,7 +180,7 @@ li.cp-timeline-li_r::after {
 /* 底部二维码 */
 .footer-qcode {
   width: 100px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .comp-qcode {
@@ -196,6 +195,8 @@ li.cp-timeline-li_r::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 2px solid #ccc;
+  transition: all .1s;
 }
 .comp-qcode-img {
   height: 300%;
@@ -221,6 +222,24 @@ li.cp-timeline-li_r::after {
 }
 .qcode {
   width: 100px;
+}
+/* 滑窗控制器 */
+.toggleDrawer-button-wrapper {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1000;
+
+}
+.toggleDrawer-button {
+  background: url('/favicon.ico');
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-size: 90% 90%;
+  background-position: center center;
+  border: 2px dotted orange;
 }
 
 /* 文章列表 */
@@ -267,7 +286,7 @@ li.cp-timeline-li_r::after {
 
 @media screen and (max-width: 760px) {
   .app-body {
-    padding: 12px 20px;
+    padding: 6px 20px 12px;
   }
   /* 底部二维码显隐藏 */
   .comp-qcode {
@@ -300,7 +319,11 @@ li.cp-timeline-li_r::after {
   .topbar {
     padding: 0;
   }
+  .topbar > div {
+    min-height: 54px !important;
+  }
 }
+
 
 @media screen and (max-width: 700px) {
   .gitbook-card {

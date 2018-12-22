@@ -78,8 +78,8 @@ class ArticalItem extends Component {
 			  		style={{color: colors.lightBlue[800]}}
 			  		onClick={(e) => {e.stopPropagation()}}
 			  		rel="noopener noreferrer" >{item.book.name}</a>
-			  	<span className="date-type-full"> ({date})</span>
-			  	<span className="date-type-short"> ({moment(date).format('MM/DD')})</span>
+			  	<span className="date-type-full">&nbsp;({date})</span>
+			  	<span className="date-type-short">&nbsp;({moment(date).format('MM/DD')})</span>
 			  </p>
 			  <span className={classes.arrow}>{this.state.open ? <ExpandLess /> : <ExpandMore />}</span>
 			</ListItem>

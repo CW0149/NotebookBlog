@@ -1,15 +1,13 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
+
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button  from '@material-ui/core/Button'
 
-import Timeline from 'components/Timeline'
 import { colorsArr } from 'config/theme'
-import { updateAndPlanData, siteUpdatesData } from 'store/data'
 import books from 'config/book'
-
 
 const colorPicker = ['50']
 const bgColors = []
@@ -53,16 +51,4 @@ const Gitbook = withStyles(gitbookStyles)(
 	)
 )
 
-const UpdatesAndPlan = (props) => {
-	return (
-		<Timeline data={updateAndPlanData} />
-	)
-}
-
-const SiteUpdates = (props) => {
-	return (
-		<Timeline data={siteUpdatesData} />
-	)
-}
-
-export { Gitbook, UpdatesAndPlan, SiteUpdates }
+export default Gitbook

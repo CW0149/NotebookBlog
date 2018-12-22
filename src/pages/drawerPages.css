@@ -1,0 +1,57 @@
+.github-popular {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.github-popular-select {
+	position: relative;
+	top: -10px;
+}
+
+.github-popular-languages {
+	margin: 0 auto 30px;
+	text-align: center;
+}
+
+.github-popular-languages li {
+	cursor: pointer;
+	margin: 0 20px;
+	display: inline-block;
+	height: 18px;
+}
+
+.github-popular-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.github-popular-item {
+	margin: 20px 30px;
+	text-align: center;
+}
+
+.github-list-item {
+	margin-bottom: 7px;
+}
+
+.github-avatar {
+	width: 150px;
+	border-radius: 50%;
+}
+
+.github-popular-rank {
+	font-size: 20px;
+	margin: 10px;
+}
+
+.vlist-option {
+	cursor: pointer;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+}

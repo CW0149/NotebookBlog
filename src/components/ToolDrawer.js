@@ -7,7 +7,7 @@ import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import SvgIcon from '@material-ui/core/SvgIcon'
-import routes from 'config/routes'
+import { drawer } from 'config/routes'
 import { colors } from 'config/theme'
 
 const { red, orange, yellow, green, blue, lime, purple } = colors
@@ -16,7 +16,7 @@ const colorPicker = ['600']
 const bgColors = []
 colorsArr.forEach(color => bgColors.push(color[colorPicker]))
 
-const pagesList = routes.drawer
+const pagesList = drawer
 
 const styles = {
   list: {
@@ -57,14 +57,15 @@ class ToolDrawer extends Component {
 			<Drawer anchor="right" open={props.open} onClose={() => props.toggleDrawer(false)}>
         <div className={classes.list}>
           {
-            pagesList.map(cate => (
+            pagesList.map((cate, i1) => (
               <React.Fragment key={cate.category}>
                 <List key={cate.category}>
                   {
-                    cate.items.map((item, index) => {
+                    cate.items.map((item, i2) => {
+                      const itemsLen = ((pagesList[i1 - 1] || {}).items || []).length
                       return (<Link to={item.path} key={item.title} style={{width: '100%'}}>
-                        <ListItem button>
-                          <HomeIcon className={classes.iconHome} style={{color: bgColors[index]}} />
+                        <ListItem button onClick={() => props.toggleDrawer(false)}>
+                          <HomeIcon className={classes.iconHome} style={{color: bgColors[i1 * itemsLen + i2]}} />
                           <span className={classes.ListItemText}>{item.title}</span>
                         </ListItem>
                       </Link>)

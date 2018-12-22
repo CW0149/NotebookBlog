@@ -1,3 +1,6 @@
-export { Gitbook, UpdatesAndPlan, SiteUpdates } from './PagesOfNav'
-
 export { default as GithubPopular } from './GithubPopular'
+export { default as KnowleageMap } from './KnowleageMap'
+export { default as IndexPage } from './nav/IndexPage'
+export { default as Gitbook } from './nav/Gitbook'
+export { default as UpdatesAndPlan } from './nav/UpdatesAndPlan'
+export { default as SiteUpdates } from './nav/SiteUpdates'

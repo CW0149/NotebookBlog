@@ -49,7 +49,7 @@ const TopBar = withStyles(topbarStyle)(
 								src="/favicon.ico"
 								style={{width: '100%'}}
 								alt="logo"
-								onClick={() => toggleDrawer(true)}
+								onClick={toggleDrawer.bind(null, true)}
 							/>
 						</div>
 					</div>
@@ -126,6 +126,12 @@ const topbarMobileStyle = {
   menuItem: {
   	display: 'block'
   }
+}
+
+TopBarMobile.propTypes = {
+	// toggleDrawer: Proptypes.func.isRequired,
+	classes: Proptypes.object,
+	menu: Proptypes.array.isRequired
 }
 
 const StyledTopbarMobile = withStyles(topbarMobileStyle)(TopBarMobile)
