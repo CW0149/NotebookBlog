@@ -25,21 +25,23 @@ function rowRenderer(props) {
 
 
 
-function VList(props) {
-  console.log('render')
-  return (
-    <List
-      style={{padding: '10px 0 0', height: 'auto !important', maxHeight: '300px', outline: 'none'}}
-      width={props.width}
-      height={300}
-      rowCount={props.list.length}
-      rowHeight={40}
-      rowRenderer={rowRenderer(props)}
-      noRowsRenderer={() => (
-        <div style={{paddingBottom: '10px'}}>No Options</div>
-      )}
-    />
-  )
+class VList extends React.PureComponent {
+  render() {
+    const { props } = this
+    return (
+      <List
+        style={{padding: '10px 0 0', height: 'auto !important', maxHeight: '300px', outline: 'none'}}
+        width={props.width}
+        height={300}
+        rowCount={props.list.length}
+        rowHeight={40}
+        rowRenderer={rowRenderer(props)}
+        noRowsRenderer={() => (
+          <div style={{paddingBottom: '10px'}}>No Options</div>
+        )}
+      />
+    )
+  }
 }
 
 VList.propTypes = {

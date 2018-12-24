@@ -4,6 +4,7 @@ import api from 'utils/api'
 import './drawerPages.css'
 import ToolDrawerController from 'components/ToolDrawerController'
 import Select from 'components/Select'
+import SearchIcon from '@material-ui/icons/Search'
 
 const languages = ['All', 'JavaScript', 'CSS', 'Python', 'Ruby']
 
@@ -15,7 +16,7 @@ function SelectLanguage({ selectMore, selectedLanguage, onSelect, open }) {
 				languages.map(lang => {
 					return (
 						<li
-							style={lang === selectedLanguage ? { color: 'red' } : null}
+							style={lang === selectedLanguage ? { color: '#e0353d' } : null}
 							key={lang}
 							onClick={onSelect.bind(null, lang)}
 						>{lang}</li>
@@ -65,7 +66,7 @@ class MoreLan extends React.PureComponent {
 						?
 							<div className="github-popular-select"><Select suggestions={state.languages} onSelect={props.onSelect}  /></div>
 						:
-							<span onClick={props.toogleOpen.bind(null, true)}>More</span>
+							<SearchIcon onClick={props.toogleOpen.bind(null, true)} fontSize="small" color="inherit" />
 				}
 			</li>
 		)
@@ -74,25 +75,28 @@ class MoreLan extends React.PureComponent {
 
 function RepoGrid(props) {
 	return (
-		<ul className="github-popular-list">
-			{props.repos.map((repo, index) => (
-				<li key={repo.name} className="github-popular-item">
-					<div className="github-popular-rank">#{index + 1}</div>
-					<ul className="github-list-items">
-						<li>
-							<img
-								className="github-avatar"
-								src={repo.owner.avatar_url}
-								alt={`Avatar for ${repo.owner.login}`}
-							/>
-						</li>
-						<li><a href={repo.html_url} target="_black">{repo.name}</a></li>
-						<li>@{repo.owner.login}</li>
-						<li>@{repo.stargazers_count} stars</li>
-					</ul>
-				</li>
-			))}
-		</ul>
+		props.repos.length ?
+			(<ul className="github-popular-list">
+				{props.repos.map((repo, index) => (
+					<li key={repo.name} className="github-popular-item">
+						<div className="github-popular-rank">#{index + 1}</div>
+						<ul className="github-list-items">
+							<li>
+								<img
+									className="github-avatar"
+									src={repo.owner.avatar_url}
+									alt={`Avatar for ${repo.owner.login}`}
+								/>
+							</li>
+							<li><a href={repo.html_url} target="_black">{repo.name}</a></li>
+							<li>@{repo.owner.login}</li>
+							<li>@{repo.stargazers_count} stars</li>
+						</ul>
+					</li>
+				))}
+			</ul>)
+		:
+			<div style={{fontSize: '40px', textAlign: 'center', marginTop: '100px'}}>No Result</div>
 	)
 }
 
@@ -100,30 +104,28 @@ class GithubPopular extends React.Component {
 	state = {
 		selectedLanguage: 'All',
 		repos: null,
-		selectArea: false,
 		moreOpen: false
 	}
-
-	cache = {}
 
 	componentDidMount() {
 		this.updateLanguage(this.state.selectedLanguage)
 	}
 
 	updateLanguage = (lang) => {
+		const storedRepos = sessionStorage.getItem(lang) || null
 		this.setState({
 			selectedLanguage: lang,
-			repos: this.cache[lang] || null,
+			repos: storedRepos && JSON.parse(storedRepos),
 			moreOpen: languages.indexOf(lang) === -1
 		})
-		if (!this.cache[lang]) {
+		if (!storedRepos) {
 			api.fetchPopularRepos(lang)
 				.then(repos => {
 					this.setState({
 						repos,
 
 					})
-					this.cache[lang] = repos
+					sessionStorage.setItem(lang, JSON.stringify(repos))
 				})
 		}
 	}
@@ -131,14 +133,13 @@ class GithubPopular extends React.Component {
 	toogleOpen = (open) => {
 		this.setState(({ selectedLanguage }) => {
 			return {
-				moreOpen: open,
-				selectedLanguage: open ? '' : selectedLanguage
+				moreOpen: open
 			}
 		})
 	}
 
 	render() {
-		const { selectedLanguage, repos, selectArea, moreOpen } = this.state
+		const { selectedLanguage, repos, moreOpen } = this.state
 		return (
 			<div className="github-popular">
 				<SelectLanguage selectedLanguage={selectedLanguage} onSelect={this.updateLanguage} selectMore={this.toogleOpen} open={moreOpen} />

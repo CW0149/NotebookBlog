@@ -13,6 +13,7 @@
 .github-popular-languages {
 	margin: 0 auto 30px;
 	text-align: center;
+	height: 24px;
 }
 
 .github-popular-languages li {
@@ -20,6 +21,13 @@
 	margin: 0 20px;
 	display: inline-block;
 	height: 18px;
+	font-weight: 400;
+	vertical-align: bottom;
+}
+
+.github-popular-more {
+	/*color: #06ad0d;*/
+	color: #111;
 }
 
 .github-popular-list {

@@ -35,6 +35,17 @@ const updatedAritcals = {
 			title: '总结',
 			path: '/summary.html'
 		}]
+	},
+	'2018-12-23': {
+		book: booksMap.rf,
+		path: '/practice',
+		list: [{
+			title: '如何优化网站速度',
+			path: '/speedup.html'
+		}, {
+			title: '常用的React包',
+			path: '/dependencies.html'
+		}]
 	}
 }
 

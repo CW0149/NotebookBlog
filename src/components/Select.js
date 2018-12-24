@@ -6,52 +6,11 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import NoSsr from '@material-ui/core/NoSsr'
 import TextField from '@material-ui/core/TextField'
-import Paper from '@material-ui/core/Paper'
 import Chip from '@material-ui/core/Chip'
 import CancelIcon from '@material-ui/icons/Cancel'
 import { emphasize } from '@material-ui/core/styles/colorManipulator'
 
 import VList from 'components/visualized/List'
-
-// const suggestions = [
-//   { label: 'Afghanistan' },
-//   { label: 'Aland Islands' },
-//   { label: 'Albania' },
-//   { label: 'Algeria' },
-//   { label: 'American Samoa' },
-//   { label: 'Andorra' },
-//   { label: 'Angola' },
-//   { label: 'Anguilla' },
-//   { label: 'Antarctica' },
-//   { label: 'Antigua and Barbuda' },
-//   { label: 'Argentina' },
-//   { label: 'Armenia' },
-//   { label: 'Aruba' },
-//   { label: 'Australia' },
-//   { label: 'Austria' },
-//   { label: 'Azerbaijan' },
-//   { label: 'Bahamas' },
-//   { label: 'Bahrain' },
-//   { label: 'Bangladesh' },
-//   { label: 'Barbados' },
-//   { label: 'Belarus' },
-//   { label: 'Belgium' },
-//   { label: 'Belize' },
-//   { label: 'Benin' },
-//   { label: 'Bermuda' },
-//   { label: 'Bhutan' },
-//   { label: 'Bolivia, Plurinational State of' },
-//   { label: 'Bonaire, Sint Eustatius and Saba' },
-//   { label: 'Bosnia and Herzegovina' },
-//   { label: 'Botswana' },
-//   { label: 'Bouvet Island' },
-//   { label: 'Brazil' },
-//   { label: 'British Indian Ocean Territory' },
-//   { label: 'Brunei Darussalam' },
-// ].map(suggestion => ({
-//   value: suggestion.label,
-//   label: suggestion.label,
-// }))
 
 const styles = theme => ({
   root: {
@@ -103,18 +62,6 @@ const styles = theme => ({
     height: theme.spacing.unit * 2,
   },
 })
-
-function NoOptionsMessage(props) {
-  return (
-    <Typography
-      color="textSecondary"
-      className={props.selectProps.classes.noOptionsMessage}
-      {...props.innerProps}
-    >
-      {props.children}
-    </Typography>
-  )
-}
 
 function inputComponent({ inputRef, ...props }) {
   return <div ref={inputRef} {...props} />
@@ -179,7 +126,7 @@ function MultiValue(props) {
 
 function MenuList(props) {
   return (
-    <VList list={props.children} width={200} />
+    <VList list={Array.isArray(props.children) ? props.children : []} width={200} />
   )
 }
 
@@ -187,7 +134,6 @@ const components = {
   Control,
   MenuList,
   MultiValue,
-  NoOptionsMessage,
   Placeholder,
   SingleValue,
   ValueContainer,
