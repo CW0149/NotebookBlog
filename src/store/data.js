@@ -46,6 +46,32 @@ const updatedAritcals = {
 			title: '常用的React包',
 			path: '/dependencies.html'
 		}]
+	},
+	'2018-12-29': {
+		book: booksMap.lc,
+		path: '/string',
+		list: [{
+			title: '无重复字符的最长子串',
+			path: '/1.html'
+		}, {
+			title: '最长公共前缀',
+			path: '/2.html'
+		}, {
+			title: '字符串的排列',
+			path: '/3.html'
+		}, {
+			title: '字符串相乘',
+			path: '/4.html'
+		}, {
+			title: '翻转字符串里的单词',
+			path: '/5.html'
+		}, {
+			title: '简化路径',
+			path: '/6.html'
+		}, {
+			title: '复原IP地址',
+			path: '/7.html'
+		}]
 	}
 }
 
@@ -57,6 +83,14 @@ const updatedArr = Object.keys(updatedAritcals).map(key => {
 		list: item.list.map(arti => arti.title)
 	}
 })
+
+const allArticals = Object.keys(updatedAritcals).reduce((result, date) => {
+	const { book, list, path } = updatedAritcals[date]
+	const handledList = list.map(item => ({ ...item, path: `${path || ''}${item.path}` }));
+	result[book.id] = result[book.id] || { book, list: [] }
+	result[book.id].list = result[book.id].list.concat(handledList)
+	return result;
+}, {})
 
 const updateAndPlanData = [
 	{
@@ -110,7 +144,11 @@ const siteUpdatesData = [{
 		date: '2018-12-22',
 		title: '网站提速、新增功能',
 		list: ['优化网站加载速度',  'githubGate支持语言搜索', '滑窗添加思维导图模块（未完成）']
+	}, {
+		date: '2018-12-29',
+		title: '全部文章列表',
+		list: ['首页添加全部文章列表']
 	}]
 }]
 
-export { updateAndPlanData, siteUpdatesData, updatedAritcals }
+export { updateAndPlanData, siteUpdatesData, updatedAritcals, allArticals }

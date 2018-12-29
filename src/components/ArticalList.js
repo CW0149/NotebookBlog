@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { updatedAritcals } from '../store/data'
 
 import { withStyles } from '@material-ui/core/styles'
 import Collapse from '@material-ui/core/Collapse'
@@ -19,8 +18,12 @@ const styles = theme => ({
   	display: 'flex',
   	flexWrap: 'wrap',
   	width: '100%',
-  	justifyContent: 'space-between',
+  	justifyContent: 'space-around',
     backgroundColor: theme.palette.background.paper,
+  },
+  root_row: {
+  		width: '100%',
+  	  backgroundColor: theme.palette.background.paper,
   },
   item: {
   	padding: 0,
@@ -33,7 +36,25 @@ const styles = theme => ({
   	overflowX: 'auto',
   	overflowY: 'hidden'
   },
+  item_row: {
+  	padding: 0,
+  	cursor: 'pointer',
+  	userSelect: 'none',
+  	color: '#333',
+  	lineHeight: '24px',
+  	whiteSpace: 'nowrap',
+  	overflowX: 'auto',
+  	overflowY: 'hidden',
+  	paddingBottom: 4,
+  	borderBottom: '1px dashed #eee'
+  },
   itemLink: {
+  	paddingTop: '10px',
+  	paddingBottom: '0'
+  },
+  itemLink_row: {
+  	flex: 1,
+  	whiteSpace: 'nowrap',
   	paddingTop: '10px',
   	paddingBottom: '0'
   },
@@ -50,6 +71,17 @@ const styles = theme => ({
   	lineHeight: 1,
   	color: colors.green[400],
   	paddingLeft: '12px'
+  },
+  articalWrapper: {
+  	display: 'flex',
+  	flexWrap: 'wrap',
+  	justifyContent: 'flex-start',
+  	marginBottom: '40px',
+  	marginTop: '10px'
+  },
+  title: {
+  	flex: 1,
+  	margin: 0
   }
 })
 
@@ -64,30 +96,36 @@ class ArticalItem extends Component {
 	}
 
 	render() {
-		const { item, date, classes } = this.props;
+		const { item, date, classes, type } = this.props;
 
 		return (<div className="artical-list">
-			<ListItem onClick={this.handleClick} className={classes.item}>
+			<ListItem onClick={this.handleClick} className={type === 'row' ? classes.item_row : classes.item}>
 			  <ListItemIcon>
 			    <StarIcon style={{color: colors.lightBlue['400']}} />
 			  </ListItemIcon>
-			  <p className="artical-list-item_title">
+			  <p className={type === 'row' ? classes.title : "artical-list-item_title"}>
 			  	<a
 			  		href={`${item.book.url}/${item.path || ''}`}
 			  		target="_blank"
 			  		style={{color: colors.lightBlue[800]}}
 			  		onClick={(e) => {e.stopPropagation()}}
 			  		rel="noopener noreferrer" >{item.book.name}</a>
-			  	<span className="date-type-full">&nbsp;({date})</span>
-			  	<span className="date-type-short">&nbsp;({moment(date).format('MM/DD')})</span>
+			  	{
+			  		type !== 'row' && (
+			  			<span>
+			  				<span className="date-type-full">&nbsp;({date})</span>
+			  				<span className="date-type-short">&nbsp;({moment(date).format('MM/DD')})</span>
+			  			</span>
+			  		)
+			  	}
 			  </p>
 			  <span className={classes.arrow}>{this.state.open ? <ExpandLess /> : <ExpandMore />}</span>
 			</ListItem>
 			<Collapse in={this.state.open} timeout="auto" unmountOnExit>
-				<List component="div" disablePadding>
+				<List component="div" disablePadding className={type==='row' ? classes.articalWrapper : undefined}>
 					{
 						item.list.map(artical => (
-							<ListItem key={artical.title} className={classes.itemLink}>
+							<ListItem key={artical.title} className={type === 'row' ? classes.itemLink_row : classes.itemLink}>
 								<a
 									href={`${item.book.url}${item.path || ''}${artical.path || ''}`}
 									target="_blank"
@@ -104,14 +142,14 @@ class ArticalItem extends Component {
 }
 
 function ArticalList(props) {
-	const { classes } = props;
+	const { classes, articals, type } = props;
 
 	return (
-		<List className={classes.root}>
+		<List className={type === 'row' ? classes.root_row : classes.root}>
 			{
-				Object.keys(updatedAritcals).map(date => {
-					const item = updatedAritcals[date]
-					return <ArticalItem item={item} date={date} key={date} classes={classes} />
+				Object.keys(articals).reverse().map(date => {
+					const item = articals[date]
+					return <ArticalItem item={item} date={date} key={date} classes={classes} type={type} />
 				})
 			}
     </List>
@@ -123,7 +161,9 @@ ArticalList.defaultProps = {
 }
 
 ArticalList.propTypes = {
-	classes: PropTypes.object
+	classes: PropTypes.object,
+	articals: PropTypes.object,
+	type: PropTypes.string
 }
 
 export default withStyles(styles)(ArticalList)
