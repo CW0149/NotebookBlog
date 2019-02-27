@@ -63,12 +63,12 @@ class Timeline extends Component {
 											}
 										>
 											<li
-												style={{top: `${moment.duration(moment(point.date) - moment('2018-12-01')).asDays() / 90 * lineHeight}px`}}
+												style={{top: `${moment.duration(moment(point.date, 'YYYY-MM-DD') - moment('2018-12-09', 'YYYY-MM-DD')).asDays() / 90 * lineHeight}px`}}
 												key={point.title}
 												className={`cp-timeline-li_${item.side === 'left' || (item.side === 'alternative' && (index % 2)) ? 'l' : 'r'}`}
 											>{point.title}
 												<span className="date-type-full"> ({point.date})</span>
-												<span className="date-type-short timeline-date_mobile">{moment(point.date).format('MM/DD')}</span>
+												<span className="date-type-short timeline-date_mobile">{moment(point.date, 'YYYY-MM-DD').format('MM/DD')}</span>
 											</li>
 										</Tooltip>
 									))

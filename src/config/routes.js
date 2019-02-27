@@ -1,7 +1,7 @@
 import React from 'react'
-import lazyLoad from 'utils/lazyLoad'
-import IndexPage from 'pages/nav/IndexPage'
-import Gitbook from 'pages/nav/Gitbook'
+import lazyLoad from '../utils/lazyLoad'
+import IndexPage from '../pages/nav/IndexPage'
+import Gitbook from '../pages/nav/Gitbook'
 import UpdatesAndPlan from 'pages/nav/UpdatesAndPlan'
 import SiteUpdates from 'pages/nav/SiteUpdates'
 

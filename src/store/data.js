@@ -47,30 +47,12 @@ const updatedAritcals = {
 			path: '/dependencies.html'
 		}]
 	},
-	'2018-12-29': {
-		book: booksMap.lc,
-		path: '/string',
+	'2019-02-01': {
+		book: booksMap.lce,
+		path: '/',
 		list: [{
-			title: '无重复字符的最长子串',
-			path: '/1.html'
-		}, {
-			title: '最长公共前缀',
-			path: '/2.html'
-		}, {
-			title: '字符串的排列',
-			path: '/3.html'
-		}, {
-			title: '字符串相乘',
-			path: '/4.html'
-		}, {
-			title: '翻转字符串里的单词',
-			path: '/5.html'
-		}, {
-			title: '简化路径',
-			path: '/6.html'
-		}, {
-			title: '复原IP地址',
-			path: '/7.html'
+			title: 'LeetCode全部(249道)简单题',
+			path: '/'
 		}]
 	}
 }
@@ -108,6 +90,10 @@ const updateAndPlanData = [
 			date: '2018-12-16',
 			title: 'Server、Udacity',
 			list: ['certbot通配域名添加https', 'niginx配置', 'ssh免密登录(github一台电脑多账户)', 'Udacity前端笔记']
+		}, {
+			date: '2019-1-15',
+			title: 'LeetCode Easy',
+			list: ['LeetCode 243 道简单题']
 		}]
 	},
 	{
@@ -151,4 +137,4 @@ const siteUpdatesData = [{
 	}]
 }]
 
-export { updateAndPlanData, siteUpdatesData, updatedAritcals, allArticals }
+export { updateAndPlanData, siteUpdatesData, updatedAritcals, allArticals, updatedArr }

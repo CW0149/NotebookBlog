@@ -1,4 +1,4 @@
-const gitbookHost = 'https://gitbook.huolong.tk'
+const gitbookHost = 'https://gitbook.ryanhuang.cn'
 const books = [
 	{
 		id: 'sb',
@@ -6,20 +6,40 @@ const books = [
 		url: `${gitbookHost}/Thoughts/_book`
 	},
 	{
+		id: 'st',
+		name: `便利贴`,
+		url: `${gitbookHost}/Snippet/_book`
+	},
+	{
+		id: 'tn',
+		name: `技术笔记`,
+		url: `${gitbookHost}/TechNote/_book`
+	},
+	{
 		id: 'rf',
 		name: `React Fundamentals`,
 		url: `${gitbookHost}/ReactFundamentals/_book`
 	},
 	{
-		id: 'lc',
-		name: `LeetCode`,
-		url: `${gitbookHost}/LeetCode/_book`
+		id: 'lce',
+		name: `LeetCode (Easy)`,
+		url: `${gitbookHost}/LeetCodeEasy/_book`
 	},
-	// {
-	// 	id: 'ss',
-	// 	name: `Server Side`,
-	// 	url: `${gitbookHost}/ServerSide/_book`
-	// },
+	{
+		id: 'lcm',
+		name: `LeetCode（Medium）`,
+		url: `${gitbookHost}/LeetCodeMedium/_book`
+	},
+	{
+		id: 'lch',
+		name: `LeetCode（Hard）`,
+		url: `${gitbookHost}/LeetCodeHard/_book`
+	},
+	{
+		id: 'ss',
+		name: `Server Side`,
+		url: `${gitbookHost}/ServerSide/_book`
+	},
 	{
 		id: 'dc',
 		name: 'Docs',

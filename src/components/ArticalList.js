@@ -114,7 +114,7 @@ class ArticalItem extends Component {
 			  		type !== 'row' && (
 			  			<span>
 			  				<span className="date-type-full">&nbsp;({date})</span>
-			  				<span className="date-type-short">&nbsp;({moment(date).format('MM/DD')})</span>
+			  				<span className="date-type-short">&nbsp;({moment(date, 'YYYY-MM-DD').format('MM/DD')})</span>
 			  			</span>
 			  		)
 			  	}

@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import { colors } from 'config/theme'
 import ArticalList from 'components/ArticalList'
-import { allArticals, updatedAritcals } from 'store/data'
+import { allArticals, updatedAritcals, updatedArr } from 'store/data'
 
 const Panel = ({ title, date, children, defaultExpanded }) => {
 	return (
@@ -28,12 +28,13 @@ function IndexPage(props) {
 			<div className="app-body" style={{textAlign: 'left' }}>
 				<Panel title="小站简介" date="2018-12-09" defaultExpanded={true}>
 			  	<div>
-			    	<p>这是我的个人笔记小站，主要是前端React笔记。目前没什么内容，因此，我称它-面向未来的站点。</p>
+			    	<p>这是我的个人笔记小站，主要是前端学习笔记，于2018-12-09开始记录。</p>
 			    	<p>按照预期，我将经常更新这里的文章，可以点击<Link to="/gitbook" style={{color: colors.green['400']}}>这里</Link>查看。</p>
-				    <ol>目前小站主要分为三个模块:
-				    	<li>1、gitbook笔记。包含React笔记、玩Linux笔记、思考随笔</li>
+				    <ol>目前小站主要分以下模块:
+				    	<li>1、gitbook笔记。包含前端笔记、玩Linux笔记、思考随笔、LeetCode刷题记录</li>
 				    	<li>2、笔记更新及更新计划</li>
 				    	<li>3、小站功能更新日志</li>
+				    	<li>4、网页版小工具</li>
 				    </ol>
 			    </div>
 				</Panel>
@@ -50,10 +51,10 @@ function IndexPage(props) {
 					  最后，我将整理今年的经验写成文章，今年是我收获比较大的一年，整理这些经验需要时间，就像重构代码，不过值得期待。<br />
 					</p>
 				</Panel>
-				<Panel title="新更文章" date="2018-12-15" defaultExpanded={false}>
+				<Panel title="新更文章" date={updatedArr[updatedArr.length - 1].date} defaultExpanded={false}>
 					<ArticalList articals={updatedAritcals} />
 				</Panel>
-				<Panel title="文章列表" date="2018-12-29" defaultExpanded={true}>
+				<Panel title="文章列表" date={updatedArr[updatedArr.length - 1].date} defaultExpanded={true}>
 					<ArticalList articals={allArticals} type="row" />
 				</Panel>
 				<footer className="ss-s bs-h">
