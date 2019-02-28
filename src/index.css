@@ -39,6 +39,21 @@ a {
   overflow: auto;
 }
 
+#site-logo {
+  display: inline-block;
+  border: 2px solid;
+  padding: 0 5px;
+  line-height: 1.2;
+  color: #dca2a2;
+  font-style: italic;
+  font-weight: bold;
+  transform: rotate(8deg);
+}
+.site-logo__wrapper {
+  overflow: hidden;
+  transform: translateX(-8px);
+}
+
 .app-body {
   padding: 20px;
   max-width: 1160px;

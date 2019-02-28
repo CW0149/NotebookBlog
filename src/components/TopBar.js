@@ -34,8 +34,8 @@ const TopBar = withStyles(topbarStyle)(
 		return (
 			<AppBar color="primary" className="topbar bs-s ss-h">
 				<Toolbar>
-					<Typography variant="h6">
-					  <Link to="/">Ryan's Notebook</Link>
+					<Typography variant="h6" className="site-logo__wrapper">
+					  <Link to="/" id="site-logo">YanNotes</Link>
 					</Typography>
 					<div className={classes.grow} />
 					<nav className={classes.sectionDesktop}>

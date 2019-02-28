@@ -6,6 +6,7 @@ import UpdatesAndPlan from 'pages/nav/UpdatesAndPlan'
 import SiteUpdates from 'pages/nav/SiteUpdates'
 
 const index = {
+	title: 'Home',
 	path: '/',
 	exact: true,
 	navHeader: true,
@@ -14,16 +15,19 @@ const index = {
 
 const menu = [{
 	name: 'Gitbook',
+	title: 'Gitbook',
 	path: '/gitbook',
 	navHeader: true,
 	component: Gitbook
 }, {
 	name: 'Updates & Plan',
+	title: 'Updates & Plan',
 	path: '/timeline',
 	navHeader: true,
 	component: UpdatesAndPlan
 }, {
 	name: '更新日志',
+	title: '更新日志',
 	path: '/updates',
 	navHeader: true,
 	component: SiteUpdates
@@ -64,6 +68,7 @@ let allRoutes = [
 	...drawer.reduce((result, next) => result.concat(next.items), []),
 	{
 		name: '404',
+		title: 'Not Found',
 		component: () => <div style={{ textAlign: 'center', fontSize: '40px', marginTop: '100px' }}>
 				Ooops, not found!
 				<a href="/" style={{fontSize: '20px', color: 'green', marginLeft: '20px'}}>Home</a>
