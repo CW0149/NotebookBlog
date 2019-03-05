@@ -14,7 +14,7 @@ module.exports = function override(config, env) {
 	}
 	config.plugins = [
 		...config.plugins,
-		new BundleAnalyzerPlugin()
 	]
+	if (env === 'development') config.plugins.push(new BundleAnalyzerPlugin())
   return config
 }
