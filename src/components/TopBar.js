@@ -46,7 +46,7 @@ const TopBar = withStyles(topbarStyle)(
 					<div className="topbar-logo">
 						<div className="topbar-logo_wrapper">
 							<img
-								src="/favicon.ico"
+								src="/images/logo.jpg"
 								style={{width: '100%'}}
 								alt="logo"
 								onClick={toggleDrawer.bind(null, true)}
@@ -111,7 +111,7 @@ class TopBarMobile extends React.Component {
 					</Menu>
 					<div className={classes.grow}></div>
 					<div style={{width: '40px', height: '40px', background: '#fff', overflow: 'hidden', padding: '2px', boxSizing: 'border-box', borderRadius: '50%'}}>
-						<Link to="/"><img src="/favicon.ico" style={{width: '100%'}} alt="logo" /></Link>
+						<Link to="/"><img src="/images/logo.jpg" style={{width: '100%'}} alt="logo" /></Link>
 					</div>
 				</Toolbar>
 			</AppBar>

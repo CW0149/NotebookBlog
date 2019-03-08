@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 const style = {
 	main: {
 		textAlign: 'center',
-		height: 'calc(100vh - 64px)',
+		height: 'calc(100vh - 100px)',
 		overflow: 'auto'
 	},
 	line: {
@@ -16,7 +16,7 @@ const style = {
 		background: '#E6EE9C',
 		width: 2,
 		borderRadius: '2px',
-		height: '90%',
+		height: `${moment.duration(moment().add(7, 'd') - moment('2018-12-09', 'YYYY-MM-DD')).asDays() * 6}px`,
 		marginLeft: -1,
 		marginTop: 50,
 		minHeight: 500,
@@ -63,7 +63,7 @@ class Timeline extends Component {
 											}
 										>
 											<li
-												style={{top: `${moment.duration(moment(point.date, 'YYYY-MM-DD') - moment('2018-12-09', 'YYYY-MM-DD')).asDays() / 90 * lineHeight}px`}}
+												style={{top: `${moment.duration(moment(point.date, 'YYYY-MM-DD') - moment('2018-12-09', 'YYYY-MM-DD')).asDays() * 6}px`}}
 												key={point.title}
 												className={`cp-timeline-li_${item.side === 'left' || (item.side === 'alternative' && (index % 2)) ? 'l' : 'r'}`}
 											>{point.title}

@@ -54,6 +54,52 @@ const updatedAritcals = {
 			title: 'LeetCode全部(249道)简单题',
 			path: '/'
 		}]
+	},
+	'2019-03-01': {
+		book: booksMap.tn,
+		path: '/',
+		list: [{
+			title: '正则表达式',
+			path: '/tech/regexp.html'
+		}, {
+			title: 'URL编码',
+			path: '/tech/urlEncode.html'
+		}, {
+			title: '作用域',
+			path: '/tech/scope.html'
+		}, {
+			title: 'this和对象原型',
+			path: '/tech/this-and-object-prototypes.html'
+		}, {
+			title: '类型和语法',
+			path: '/tech/Types-and-Grammar.html'
+		}, {
+			title: '链接收藏',
+			path: '/links/'
+		}]
+	},
+	'2019-03-08': {
+		book: booksMap.tn,
+		path: '/',
+		list: [{
+			title: 'JS 难点',
+			path: '/frontend/difficulty.html'
+		}, {
+			title: '正则与模版引擎',
+			path: '/frontend/regexp-and-template-engine.html'
+		}, {
+			title: '跨域与前端安全',
+			path: '/frontend/cross-origin-and-safe.html'
+		}, {
+			title: '自动化集成测试',
+			path: '/frontend/test.html'
+		}, {
+			title: '申请SSL通配符证书',
+			path: '/practice/ssl.html'
+		}, {
+			title: '2019-02-04 书摘',
+			path: '/articles/2019-02-04.html'
+		}]
 	}
 }
 
