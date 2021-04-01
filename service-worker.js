@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/NotebookBlog/precache-manifest.d06f2d8cc2bc160b42958ee442ece881.js"
+  "https://cw0149.github.io/NotebookBlog/precache-manifest.6d157524dd7c589a64e61fa7419931db.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/NotebookBlog/index.html", {
+workbox.routing.registerNavigationRoute("https://cw0149.github.io/NotebookBlog/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
