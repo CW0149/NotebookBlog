@@ -3,72 +3,72 @@ const books = [
 	{
 		id: 'sb',
 		name: '随笔',
-		url: `${gitbookHost}/Thoughts/_book`
+		url: `${gitbookHost}/Thoughts`
 	},
 	{
 		id: 'st',
 		name: `便利贴`,
-		url: `${gitbookHost}/Snippet/_book`
+		url: `${gitbookHost}/Snippet`
 	},
 	{
 		id: 'tn',
 		name: `技术笔记`,
-		url: `${gitbookHost}/TechNote/_book`
+		url: `${gitbookHost}/TechNote`
 	},
 	{
 		id: 'rf',
 		name: `React Fundamentals`,
-		url: `${gitbookHost}/ReactFundamentals/_book`
+		url: `${gitbookHost}/ReactFundamentals`
 	},
 	{
 		id: 'lce',
 		name: `LeetCode (Easy)`,
-		url: `${gitbookHost}/LeetCodeEasy/_book`
+		url: `${gitbookHost}/LeetCodeEasy`
 	},
 	{
 		id: 'lcm',
 		name: `LeetCode（Medium）`,
-		url: `${gitbookHost}/LeetCodeMedium/_book`
+		url: `${gitbookHost}/LeetCodeMedium`
 	},
 	{
 		id: 'lch',
 		name: `LeetCode（Hard）`,
-		url: `${gitbookHost}/LeetCodeHard/_book`
+		url: `${gitbookHost}/LeetCodeHard`
 	},
 	{
 		id: 'ss',
 		name: `Server Side`,
-		url: `${gitbookHost}/ServerSide/_book`
+		url: `${gitbookHost}/ServerSide`
 	},
 	{
 		id: 'dc',
 		name: 'Docs',
-		url: `${gitbookHost}/Docs/_book`
+		url: `${gitbookHost}/Docs`
 	},
 	// {
 	// 	id: 'mj',
 	// 	name: 'Modern JavaScript',
-	// 	url: `${gitbookHost}/ModernJS/_book`
+	// 	url: `${gitbookHost}/ModernJS`
 	// },
 	// {
 	// 	id: 'aj',
 	// 	name: 'Advanced JavaScript',
-	// 	url: `${gitbookHost}/AdvancedJS/_book`
+	// 	url: `${gitbookHost}/AdvancedJS`
 	// },
 	// {
 	// 	id: 'rx',
 	// 	name: 'Redux',
-	// 	url: `${gitbookHost}/Redux/_book`
+	// 	url: `${gitbookHost}/Redux`
 	// },
 	// {
 	// 	id: 'rr',
 	// 	name: 'React Router V4',
-	// 	url: `${gitbookHost}/ReactRouterV4/_book`
+	// 	url: `${gitbookHost}/ReactRouterV4`
 	// },
 	// {
 	// 	id: 'rn',
 	// 	name: 'React Native',
-	// 	url: `${gitbookHost}/ReactNative/_book`
+	// 	url: `${gitbookHost}/ReactNative`
 	// }
 ]
 
